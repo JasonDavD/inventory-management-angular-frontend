@@ -1,0 +1,107 @@
+<app-navbar />
+
+<main class="erp-page">
+  <!-- Cabecera -->
+  <div class="mb-8">
+    <h1 class="erp-page-title">Panel Principal</h1>
+    <p class="erp-page-subtitle">Bienvenido, <strong class="text-[#1B2A4A]">{{ nombreCompleto }}</strong> — {{ rol }}</p>
+  </div>
+
+  <!-- Grid de módulos -->
+  <div class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-4">
+
+    <!-- Almacenes -->
+    <a routerLink="/almacenes"
+       class="bg-white border border-[#D3D1C7] rounded-xl p-6 no-underline flex flex-col gap-2.5 relative hover:border-[#5B9BD5] hover:shadow-[0_4px_16px_rgba(45,74,138,0.1)] hover:-translate-y-0.5 transition-all cursor-pointer">
+      <div class="w-11 h-11 rounded-[10px] flex items-center justify-center bg-[#E6F1FB]">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2D4A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+      </div>
+      <div class="text-[15px] font-semibold text-[#1B2A4A]">Almacenes</div>
+      <div class="text-[12px] text-[#888780] leading-relaxed">Gestión de almacenes y ubicaciones</div>
+    </a>
+
+    <!-- Categorías -->
+    <a routerLink="/categorias"
+       class="bg-white border border-[#D3D1C7] rounded-xl p-6 no-underline flex flex-col gap-2.5 relative hover:border-[#5B9BD5] hover:shadow-[0_4px_16px_rgba(45,74,138,0.1)] hover:-translate-y-0.5 transition-all cursor-pointer">
+      <div class="w-11 h-11 rounded-[10px] flex items-center justify-center bg-[#E6F1FB]">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2D4A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+        </svg>
+      </div>
+      <div class="text-[15px] font-semibold text-[#1B2A4A]">Categorías</div>
+      <div class="text-[12px] text-[#888780] leading-relaxed">Gestión de categorías de productos</div>
+    </a>
+
+    <!-- Unidades -->
+    <a routerLink="/unidades"
+       class="bg-white border border-[#D3D1C7] rounded-xl p-6 no-underline flex flex-col gap-2.5 relative hover:border-[#5B9BD5] hover:shadow-[0_4px_16px_rgba(45,74,138,0.1)] hover:-translate-y-0.5 transition-all cursor-pointer">
+      <div class="w-11 h-11 rounded-[10px] flex items-center justify-center bg-[#E6F1FB]">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2D4A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+        </svg>
+      </div>
+      <div class="text-[15px] font-semibold text-[#1B2A4A]">Unidades</div>
+      <div class="text-[12px] text-[#888780] leading-relaxed">Unidades de medida y conversiones</div>
+    </a>
+
+    <!-- Productos -->
+    <a routerLink="/productos"
+       class="bg-white border border-[#D3D1C7] rounded-xl p-6 no-underline flex flex-col gap-2.5 relative hover:border-[#5B9BD5] hover:shadow-[0_4px_16px_rgba(45,74,138,0.1)] hover:-translate-y-0.5 transition-all cursor-pointer">
+      <div class="w-11 h-11 rounded-[10px] flex items-center justify-center bg-[#E6F1FB]">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2D4A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+        </svg>
+      </div>
+      <div class="text-[15px] font-semibold text-[#1B2A4A]">Productos</div>
+      <div class="text-[12px] text-[#888780] leading-relaxed">Catálogo de productos e insumos</div>
+    </a>
+
+    <!-- Inventario -->
+    <a routerLink="/inventario"
+       class="bg-white border border-[#D3D1C7] rounded-xl p-6 no-underline flex flex-col gap-2.5 relative hover:border-[#5B9BD5] hover:shadow-[0_4px_16px_rgba(45,74,138,0.1)] hover:-translate-y-0.5 transition-all cursor-pointer">
+      <div class="w-11 h-11 rounded-[10px] flex items-center justify-center bg-[#E6F1FB]">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2D4A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+          <line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/>
+        </svg>
+      </div>
+      <div class="text-[15px] font-semibold text-[#1B2A4A]">Inventario</div>
+      <div class="text-[12px] text-[#888780] leading-relaxed">Stock por almacén y alertas de nivel</div>
+    </a>
+
+    <!-- Transacciones -->
+    <a routerLink="/movimientos"
+       class="bg-white border border-[#D3D1C7] rounded-xl p-6 no-underline flex flex-col gap-2.5 relative hover:border-[#5B9BD5] hover:shadow-[0_4px_16px_rgba(45,74,138,0.1)] hover:-translate-y-0.5 transition-all cursor-pointer">
+      <div class="w-11 h-11 rounded-[10px] flex items-center justify-center bg-[#E6F1FB]">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2D4A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/>
+          <polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+        </svg>
+      </div>
+      <div class="text-[15px] font-semibold text-[#1B2A4A]">Transacciones</div>
+      <div class="text-[12px] text-[#888780] leading-relaxed">Entradas, salidas y ajustes de stock</div>
+    </a>
+
+    <!-- Usuarios — solo ADMIN -->
+    @if (isAdmin()) {
+      <a routerLink="/usuarios"
+         class="bg-white border border-[#F09595] rounded-xl p-6 no-underline flex flex-col gap-2.5 relative hover:border-[#E24B4A] hover:shadow-[0_4px_16px_rgba(163,45,45,0.1)] hover:-translate-y-0.5 transition-all cursor-pointer">
+        <span class="absolute top-3.5 right-3.5 bg-[#FCEBEB] text-[#A32D2D] text-[10px] font-semibold px-2 py-0.5 rounded-md uppercase tracking-wide">Admin</span>
+        <div class="w-11 h-11 rounded-[10px] flex items-center justify-center bg-[#FCEBEB]">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A32D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <div class="text-[15px] font-semibold text-[#1B2A4A]">Usuarios</div>
+        <div class="text-[12px] text-[#888780] leading-relaxed">Gestión de usuarios y permisos</div>
+      </a>
+    }
+
+  </div>
+</main>
+
+<app-footer />
