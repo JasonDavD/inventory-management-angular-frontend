@@ -40,6 +40,7 @@ export class LoginComponent {
       error: (err: Error) => {
         this.cargando.set(false);
         this.error.set(err.message);
+        setTimeout(() => this.error.set(''), 5000);
       }
     });
   }
