@@ -75,9 +75,17 @@ html, body {
            hover:bg-[#F7C1C1] cursor-pointer transition-colors;
   }
 
-  .erp-page          { @apply max-w-[1400px] mx-auto px-8 py-8 w-full; }
+  .erp-page          { @apply max-w-[1400px] mx-auto px-8 py-8 w-full flex-1; }
   .erp-page-title    { @apply text-[22px] font-semibold text-erp-navy mb-1; }
   .erp-page-subtitle { @apply text-sm text-erp-muted mb-6; }
   .erp-card          { @apply bg-white rounded-xl border border-erp-border p-6; }
 
+}
+
+/* Cada componente de feature ocupa la pantalla completa en columna para que el footer quede al fondo */
+app-home, app-almacenes, app-categorias, app-unidades,
+app-productos, app-inventario, app-movimientos, app-usuarios {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
