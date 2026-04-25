@@ -1,108 +1,126 @@
-<nav class="bg-[#1B2A4A] border-b border-[rgba(91,155,213,0.15)] sticky top-0 z-50">
-  <div class="h-[60px] px-8 max-w-[1400px] mx-auto flex items-center justify-between">
+<div class="nav-accent"></div>
 
-    <!-- Logo -->
-    <a routerLink="/home" class="flex items-center gap-2.5 no-underline shrink-0">
-      <div class="w-8 h-8 bg-[#2D4A8A] rounded-lg flex items-center justify-center">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8EEF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-          <polyline points="9 22 9 12 15 12 15 22"/>
-        </svg>
-      </div>
-      <div>
-        <div class="text-[13px] font-semibold text-[#E8EEF8] leading-tight">Distribuidora Andina</div>
-        <div class="text-[10px] text-[#5B9BD5] uppercase tracking-wider">S.A.C.</div>
+<div class="nav-bar">
+  <div class="nav-container">
+
+    <!-- Brand -->
+    <a routerLink="/home" class="nav-brand">
+      <div class="brand-mark">DA</div>
+      <div class="brand-text">
+        <span class="brand-name">Distribuidora Andina</span>
+        <span class="brand-sub">S.A.C.</span>
       </div>
     </a>
 
-    <!-- Nav links -->
-    <ul class="flex items-center gap-0.5 ml-8 list-none p-0 m-0">
+    <!-- Desktop links -->
+    <ul class="nav-links">
       <li>
-        <a routerLink="/home" routerLinkActive="text-[#E8EEF8]"
-           class="px-3.5 py-2 rounded-lg text-[13px] font-medium text-[#8FA8D0] hover:text-[#E8EEF8] hover:bg-[rgba(91,155,213,0.1)] no-underline transition-colors">
-          Inicio
-        </a>
+        <a routerLink="/home" routerLinkActive="active-link"
+           [routerLinkActiveOptions]="{exact:true}" class="nav-item">Inicio</a>
       </li>
       <li>
-        <a routerLink="/almacenes" routerLinkActive="text-[#E8EEF8]"
-           class="px-3.5 py-2 rounded-lg text-[13px] font-medium text-[#8FA8D0] hover:text-[#E8EEF8] hover:bg-[rgba(91,155,213,0.1)] no-underline transition-colors">
-          Almacenes
-        </a>
+        <a routerLink="/almacenes" routerLinkActive="active-link" class="nav-item">Almacenes</a>
       </li>
 
-      <!-- Dropdown Mantenimientos -->
-      <li class="relative">
-        <button (click)="toggleMenu($event)"
-                class="px-3.5 py-2 rounded-lg text-[13px] font-medium text-[#8FA8D0] hover:text-[#E8EEF8] hover:bg-[rgba(91,155,213,0.1)] transition-colors flex items-center gap-1.5 border-none bg-transparent cursor-pointer">
+      <!-- Dropdown -->
+      <li class="nav-drop-li">
+        <button (click)="toggleDrop($event)" class="nav-drop-btn">
           Mantenimientos
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <polyline points="6 9 12 15 18 9"/>
           </svg>
         </button>
-
         @if (menuAbierto()) {
-          <ul class="absolute top-full left-0 mt-1.5 bg-[#1E3155] border border-[rgba(91,155,213,0.2)] rounded-xl p-1.5 min-w-[180px] list-none shadow-lg z-50">
-            <li>
-              <a routerLink="/categorias" (click)="cerrarMenu()"
-                 class="flex items-center px-3.5 py-2 rounded-lg text-[13px] text-[#8FA8D0] hover:text-[#E8EEF8] hover:bg-[rgba(91,155,213,0.1)] no-underline transition-colors">
-                Categorías
-              </a>
-            </li>
-            <li>
-              <a routerLink="/unidades" (click)="cerrarMenu()"
-                 class="flex items-center px-3.5 py-2 rounded-lg text-[13px] text-[#8FA8D0] hover:text-[#E8EEF8] hover:bg-[rgba(91,155,213,0.1)] no-underline transition-colors">
-                Unidades
-              </a>
-            </li>
-            <li>
-              <a routerLink="/productos" (click)="cerrarMenu()"
-                 class="flex items-center px-3.5 py-2 rounded-lg text-[13px] text-[#8FA8D0] hover:text-[#E8EEF8] hover:bg-[rgba(91,155,213,0.1)] no-underline transition-colors">
-                Productos
-              </a>
-            </li>
+          <ul class="nav-dropdown">
+            <li><a routerLink="/categorias" (click)="onDocClick()" class="drop-link">Categorías</a></li>
+            <li><a routerLink="/unidades"   (click)="onDocClick()" class="drop-link">Unidades</a></li>
+            <li><a routerLink="/productos"  (click)="onDocClick()" class="drop-link">Productos</a></li>
             @if (isAdmin()) {
-              <li><hr class="border-[rgba(91,155,213,0.15)] my-1"></li>
-              <li>
-                <a routerLink="/usuarios" (click)="cerrarMenu()"
-                   class="flex items-center px-3.5 py-2 rounded-lg text-[13px] text-[#8FA8D0] hover:text-[#E8EEF8] hover:bg-[rgba(91,155,213,0.1)] no-underline transition-colors">
-                  Usuarios
-                </a>
-              </li>
+              <li><hr class="drop-hr"></li>
+              <li><a routerLink="/usuarios" (click)="onDocClick()" class="drop-link drop-danger">Usuarios</a></li>
             }
           </ul>
         }
       </li>
 
       <li>
-        <a routerLink="/inventario" routerLinkActive="text-[#E8EEF8]"
-           class="px-3.5 py-2 rounded-lg text-[13px] font-medium text-[#8FA8D0] hover:text-[#E8EEF8] hover:bg-[rgba(91,155,213,0.1)] no-underline transition-colors">
-          Inventario
-        </a>
+        <a routerLink="/inventario"  routerLinkActive="active-link" class="nav-item">Inventario</a>
       </li>
       <li>
-        <a routerLink="/movimientos" routerLinkActive="text-[#E8EEF8]"
-           class="px-3.5 py-2 rounded-lg text-[13px] font-medium text-[#8FA8D0] hover:text-[#E8EEF8] hover:bg-[rgba(91,155,213,0.1)] no-underline transition-colors">
-          Transacciones
-        </a>
+        <a routerLink="/movimientos" routerLinkActive="active-link" class="nav-item">Transacciones</a>
       </li>
     </ul>
 
-    <!-- Usuario + logout -->
-    <div class="flex items-center gap-3.5 shrink-0 ml-auto">
-      <div class="flex items-center gap-2.5">
-        <div class="w-8 h-8 bg-[#2D4A8A] rounded-full flex items-center justify-center shrink-0">
-          <span class="text-[11px] font-semibold text-[#E8EEF8]">{{ iniciales }}</span>
-        </div>
-        <div class="hidden sm:block">
-          <div class="text-[13px] font-medium text-[#E8EEF8] leading-tight">{{ nombreCompleto }}</div>
-          <div class="text-[11px] text-[#5B9BD5] uppercase tracking-wider">{{ rol }}</div>
-        </div>
+    <!-- Desktop user -->
+    <div class="nav-sep"></div>
+    <div class="nav-user">
+      <div class="user-avatar">{{ iniciales }}</div>
+      <div class="user-info">
+        <span class="user-name">{{ nombreCompleto }}</span>
+        <span class="user-role">{{ rol }}</span>
       </div>
-      <button (click)="logout()"
-              class="text-[13px] text-[#8FA8D0] border border-[rgba(91,155,213,0.3)] rounded-md px-3.5 py-1.5 hover:text-[#E8EEF8] hover:border-[rgba(91,155,213,0.6)] transition-colors bg-transparent cursor-pointer">
-        Salir
+      <button (click)="logout()" class="btn-logout" title="Cerrar sesión">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+          <polyline points="16 17 21 12 16 7"/>
+          <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
       </button>
     </div>
 
+    <!-- Mobile avatar + hamburger -->
+    <!-- <div class="user-avatar" style="margin-left:auto;">{{ iniciales }}</div>
+    <button (click)="toggleMovil($event)" class="hamburger" [attr.aria-expanded]="menuMovil()">
+      @if (!menuMovil()) {
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6"  x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      } @else {
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6"  y1="6" x2="18" y2="18"/>
+        </svg>
+      }
+    </button> -->
+
   </div>
-</nav>
+</div>
+
+<!-- Mobile menu -->
+@if (menuMovil()) {
+  <div class="mobile-panel">
+    <div class="mobile-inner">
+      <a routerLink="/home"       (click)="closeMovil()" class="mobile-link">Inicio</a>
+      <a routerLink="/almacenes"  (click)="closeMovil()" class="mobile-link">Almacenes</a>
+      <a routerLink="/categorias" (click)="closeMovil()" class="mobile-link">Categorías</a>
+      <a routerLink="/unidades"   (click)="closeMovil()" class="mobile-link">Unidades</a>
+      <a routerLink="/productos"  (click)="closeMovil()" class="mobile-link">Productos</a>
+      <a routerLink="/inventario" (click)="closeMovil()" class="mobile-link">Inventario</a>
+      <a routerLink="/movimientos"(click)="closeMovil()" class="mobile-link">Transacciones</a>
+      @if (isAdmin()) {
+        <div class="mobile-divider"></div>
+        <a routerLink="/usuarios" (click)="closeMovil()" class="mobile-link mobile-danger">Usuarios</a>
+      }
+      <div class="mobile-divider"></div>
+      <div class="mobile-user-row">
+        <div class="mobile-user-info">
+          <div class="user-avatar" style="width:36px;height:36px;font-size:12px;">{{ iniciales }}</div>
+          <div>
+            <div class="mobile-user-name">{{ nombreCompleto }}</div>
+            <div class="mobile-user-role">{{ rol }}</div>
+          </div>
+        </div>
+        <button (click)="logout()" class="mobile-logout-btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+            <polyline points="16 17 21 12 16 7"/>
+            <line x1="21" y1="12" x2="9" y2="12"/>
+          </svg>
+          Salir
+        </button>
+      </div>
+    </div>
+  </div>
+}
