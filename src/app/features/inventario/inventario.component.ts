@@ -21,6 +21,8 @@ export class InventarioComponent implements OnInit {
   private almacenSvc = inject(AlmacenService);
   private productoSvc = inject(ProductoService);
   private fb = inject(FormBuilder);
+  mostrarCritico = signal(false);
+  mostrarBajo = signal(false);
 
   inventario: Inventario[] = [];
   filtrados: Inventario[] = [];
@@ -62,7 +64,19 @@ export class InventarioComponent implements OnInit {
         this.productos = productos.filter(p => p.activo);
         this.filtrar();
         this.cargando.set(false);
-      },
+
+      // Lógica de visibilidad temporal
+      if (this.stocksCriticos > 0) {
+        this.mostrarCritico.set(true);
+        /*setTimeout(() => this.mostrarCritico.set(false), 5000);*/
+      }
+      
+      if (this.stocksBajos > 0) {
+        this.mostrarBajo.set(true);
+        /*setTimeout(() => this.mostrarBajo.set(false), 5000);*/
+      }
+
+      },  
       error: () => { this.mostrarAlerta('err', 'Error al cargar inventario'); this.cargando.set(false); }
     });
   }
